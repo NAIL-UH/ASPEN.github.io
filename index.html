@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="ASPEN: Adaptive Semantic Reasoning via Command Persistence Prediction for Efficient Navigation VLAs.">
+  <meta name="keywords" content="ASPEN, Vision-Language-Action, VLA, Vision-and-Language Navigation, NaVILA, Command Persistence Prediction, Event-Triggered Scheduling, Efficient Inference">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASPEN: Adaptive Semantic Reasoning via Command Persistence Prediction for Efficient Navigation VLAs</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .structure-image img {
+      max-width: 100%;
+      height: auto;
+      display: flex;
+      margin: 0 auto;
+      justify-content: center;
+      border-radius: 8px;
+    }
+    .video-container {
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 0 auto 15px auto;
+      max-width: 90%;
+    }
+    .plot-section-title {
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .figure-caption {
+      font-size: 0.9rem;
+      color: #555;
+      text-align: left;
+      margin-top: 10px;
+      margin-bottom: 25px;
+    }
+    /* Results tables */
+    .results-table {
+      margin: 0 auto;
+    }
+    .results-table th, .results-table td {
+      text-align: center !important;
+      vertical-align: middle !important;
+    }
+    .results-table th:first-child, .results-table td.method {
+      text-align: left !important;
+    }
+    .results-table tr.ours {
+      background-color: #fdecea !important;
+    }
+    .results-table tr.ours td.method {
+      font-weight: 700;
+      color: #c0392b;
+    }
+    .results-table tr.diag {
+      background-color: #fffbe6 !important;
+    }
+    .results-table .delta {
+      color: #777;
+      font-size: 0.8rem;
+    }
+    .table-caption {
+      font-size: 0.9rem;
+      color: #555;
+      text-align: left;
+      margin-bottom: 8px;
+    }
+    .equation {
+      font-family: 'Castoro', 'Times New Roman', serif;
+      font-size: 1.05rem;
+      text-align: center;
+      margin: 1rem 0 1.25rem 0;
+      line-height: 1.9;
+    }
+    .equation .brace-cases {
+      display: inline-block;
+      text-align: left;
+      vertical-align: middle;
+      border-left: 2px solid #4a4a4a;
+      padding-left: 0.6rem;
+      margin-left: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ASPEN: Adaptive Semantic Reasoning via Command Persistence Prediction for Efficient Navigation VLAs</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Vieri N. Akustia<sup>1</sup>,</span>
+            <span class="author-block">Bin Hu<sup>2</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Department of Electrical and Computer Engineering, University of Houston, Houston, TX 77004, USA</span><br>
+            <span class="author-block"><sup>2</sup>Department of Engineering Technology, University of Houston, Houston, TX 77004, USA</span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><a href="mailto:vnakustia@cougarnet.uh.edu">vnakustia@cougarnet.uh.edu</a>,</span>
+            <span class="author-block"><a href="mailto:bhu11@central.uh.edu">bhu11@central.uh.edu</a></span>
+          </div>
+
+          <div class="is-size-5 publication-venue" style="margin: 10px auto 0 auto;">
+            CoRL 2026 Workshop on Efficient Foundation Models for Real-Time Embodied AI
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2610.36285" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- TODO: Video button hidden until a video is available.
+                   To enable: replace "#" with the video link and remove these comment markers.
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-youtube"></i></span>
+                  <span>Video</span>
+                </a>
+              </span>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Navigation vision-language-action (VLA) policies repeatedly invoke costly semantic reasoning even when the next command remains unchanged. Command reuse can reduce computation but risks missing instruction-dependent turns or stops. We introduce <b>ASPEN</b>, an event-triggered scheduler based on <b>command persistence prediction</b>: estimating whether the frozen base policy would reissue its previous command. A lightweight multimodal predictor combines temporal observations, language instructions, execution history, and cached VLA confidence. At eligible command boundaries, sufficient predicted persistence permits command reuse. Otherwise, ASPEN triggers fresh semantic reasoning from the VLA.
+          </p>
+          <p>
+            Evaluated with frozen NaVILA on cross-dataset RxR-CE val-unseen, ASPEN reduces VLA calls by <b>9.5%</b> and estimated inference time by <b>8.1%</b>, including scheduling overhead. It maintains comparable navigation performance and preserves identical baseline action sequences on <b>92.1%</b> of episodes.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">ASPEN Framework</h2>
+        <div class="structure-image">
+          <img src="./static/images/Fig1_Framework.png" alt="ASPEN framework diagram: a lightweight multimodal command predictor schedules a frozen NaVILA policy">
+        </div>
+        <p class="figure-caption">
+          <b>ASPEN framework.</b> ASPEN schedules a frozen navigation VLA. At each eligible command boundary, a learned persistence score selects between reusing the previous command and calling NaVILA for fresh semantic reasoning. An eligibility check on the command history and reuse count runs first.
+        </p>
+        <div class="content has-text-justified">
+          <p>
+            Navigation VLAs such as NaVILA generate high-level commands (e.g., <i>forward 75 cm</i>, <i>turn right 45&deg;</i>) that a downstream action policy executes. Many successive decisions produce the same command, so calling the full VLA at every boundary is often unnecessary. Existing efficiency methods trigger reuse from visual-token overlap or motion history. In navigation, however, the scene can change substantially during continued forward motion, and the current view alone may not show whether an instructed landmark has already been passed. The relevant question is therefore not whether the scene or motion has changed, but <b>whether the base policy's next command would change</b> given the instruction and execution history.
+          </p>
+          <p>
+            ASPEN predicts this <i>command persistence</i> and follows the event-triggered principle: it chooses between repeating the previous command and refreshing NaVILA. Unlike a lightweight replacement controller, its predicted command distribution is used only to schedule the base policy, not to select a different executable command.
+          </p>
+          <p>This paper makes three contributions:</p>
+          <ol>
+            <li><b>Command-persistence-based scheduling</b> for a frozen navigation policy, deciding when semantic reasoning can be omitted while retaining the behavior of the base VLA.</li>
+            <li>A <b>context-conditioned multimodal predictor</b> that combines temporal observations, language instructions, execution history, and cached VLA confidence, preceded by an explicit <b>eligibility check</b>.</li>
+            <li><b>Cross-dataset evaluation</b> from R2R-CE to RxR-CE, demonstrating reduced estimated inference cost with similar observed success and high action-sequence agreement.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Lightweight Multimodal Command Predictor</h2>
+          <p>
+            Frozen <b>SigLIP</b> encodes the episode's first view and the two most recent historical decision-point views. Each view is pooled into a 9&nbsp;&times;&nbsp;9 token grid and projected to width 256. Frozen <b>Llama-3</b> encodes the instruction text once per episode, and its final hidden states are projected to the same width.
+          </p>
+          <p>
+            For each historical decision, a learned <b>state vector</b> encodes the executed command, magnitude, step count, repeat flag, episode-progress features, and cached NaVILA confidence. Following DINO-WM, the state vector is added to the corresponding visual tokens and also included as a separate state token.
+          </p>
+          <p>
+            Two width-256 transformer layers (3.7M parameters) apply causal self-attention over visual and state tokens, with <b>instruction cross-attention</b>. The resulting state output queries the separately encoded current view through attention pooling, and an MLP outputs a distribution over NaVILA's ten canonical commands.
+          </p>
+        </div>
+      </div>
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Command-Persistence Trigger</h2>
+          <p>
+            ASPEN operates at high-level command boundaries, not individual simulator steps. Before feature extraction, an <b>eligibility check</b> restricts predictor invocation to parsed forward commands with fewer than eight consecutive reuses. The <b>persistence score</b> is the learned probability mass on the previous command:
+          </p>
+          <div class="equation">
+            <i>e</i><sub><i>t</i>+1</sub> = 1{<i>a<sub>t</sub></i> &isin; &#x1D49C;<sub>fwd</sub> &and; <i>r<sub>t</sub></i> &lt; 8},&nbsp;&nbsp;
+            <i>q</i><sub><i>t</i>+1</sub> = <i>p</i><sub>&theta;</sub>(<i>a<sub>t</sub></i> | <i>o</i><sub><i>t</i>+1</sub>, <i>h<sub>t</sub></i>)<br>
+            <i>a</i><sub><i>t</i>+1</sub> =
+            <span class="brace-cases">
+              <i>a<sub>t</sub></i>, &nbsp;if <i>e</i><sub><i>t</i>+1</sub> = 1 &and; <i>q</i><sub><i>t</i>+1</sub> &ge; &tau;<br>
+              <i>a</i><sub><i>t</i>+1</sub><sup>NaVILA</sup>, &nbsp;otherwise
+            </span>
+          </div>
+          <p>
+            If the score is high enough, the previous command is reused; otherwise, ASPEN calls NaVILA for fresh semantic reasoning. NaVILA's observation history continues updating during reuse. The score predicts agreement with the reference command; it does not certify task correctness.
+          </p>
+          <p>
+            ASPEN is trained on frozen NaVILA rollouts from R2R-CE, split into disjoint training, checkpoint-selection, and calibration sets (42/6/13 buildings). Deterministic replay on the calibration set selects the threshold that maximizes call savings with an empirical divergence rate of at most 10%, yielding <b>&tau; = 0.9418</b>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Simulation Results</h2>
+    <div class="content has-text-justified">
+      <p>
+        We evaluate ASPEN with frozen NaVILA on <b>1,223 RxR-CE val-unseen episodes</b>, without any target-dataset training or tuning. Comparators include baseline NaVILA, navigation adaptations of FlashVLA's <b>FlashTrigger</b> and <b>SP-VLA</b> using published default thresholds, and two diagnostic alternatives. <b>Free Rule</b> repeats a preceding 75&nbsp;cm forward command once. <b>Full Gate</b> uses a recurrent classifier after each forward command to choose between an additional 25&nbsp;cm forward step and a NaVILA call.
+      </p>
+      <p>
+        Inference cost is estimated from logged invocation counts and fixed unit costs measured on an NVIDIA RTX PRO 6000 Blackwell GPU. ASPEN's gate costs <b>19.45&nbsp;ms</b> per call, of which the predictor itself accounts for only 1.5&nbsp;ms. Episode-level estimates include this scheduling overhead and are estimated inference costs, not measured end-to-end runtimes.
+      </p>
+    </div>
+
+    <p class="table-caption">
+      <b>Cross-dataset evaluation on 1,223 RxR-CE val-unseen episodes.</b> Parentheses show changes relative to baseline NaVILA.
+    </p>
+    <div class="table-container">
+      <table class="table is-striped is-hoverable is-fullwidth results-table" style="font-size:0.9rem;">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>VLA calls/ep &darr;</th>
+            <th>Inference s/ep &darr;</th>
+            <th>SR (%) &uarr;</th>
+            <th>OS (%) &uarr;</th>
+            <th>nDTW (%) &uarr;</th>
+            <th>NE (m) &darr;</th>
+            <th>Exact agreement (%) &uarr;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="method">Baseline NaVILA</td><td>75.9</td><td>41.5</td><td>53.0</td><td>59.9</td><td>63.3</td><td>5.93</td><td>100.0</td></tr>
+          <tr><td class="method">FlashTrigger</td><td>72.0 <span class="delta">(&minus;5.1%)</span></td><td>39.7 <span class="delta">(&minus;4.5%)</span></td><td>53.0</td><td><b>59.9</b></td><td><b>63.3</b></td><td><b>5.93</b></td><td><b>97.5</b></td></tr>
+          <tr><td class="method">SP-VLA</td><td>69.4 <span class="delta">(&minus;8.5%)</span></td><td>38.0 <span class="delta">(&minus;8.5%)</span></td><td>42.7</td><td>53.2</td><td>53.2</td><td>7.17</td><td>7.3</td></tr>
+          <tr class="diag"><td class="method">Free Rule (ours)</td><td><b>61.0</b> <span class="delta">(&minus;19.6%)</span></td><td><b>33.4</b> <span class="delta">(&minus;19.6%)</span></td><td>49.1</td><td>57.3</td><td>58.4</td><td>6.64</td><td>7.1</td></tr>
+          <tr class="diag"><td class="method">Full Gate (ours)</td><td>66.9 <span class="delta">(&minus;11.7%)</span></td><td>40.2 <span class="delta">(&minus;3.3%)</span></td><td>51.6</td><td>59.5</td><td>61.8</td><td>6.36</td><td>21.8</td></tr>
+          <tr class="ours"><td class="method">ASPEN (ours)</td><td>68.7 <span class="delta">(&minus;9.5%)</span></td><td>38.2 <span class="delta">(&minus;8.1%)</span></td><td><b>53.1</b></td><td>59.8</td><td>63.2</td><td>5.95</td><td>92.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="is-size-7 has-text-grey" style="text-align: left;">
+      Notes: SR: success rate; OS: oracle success; nDTW: normalized dynamic time warping; NE: navigation error. Bold marks the best value among the non-baseline methods. Exact agreement is the percentage of episodes with the same complete executed action sequence as baseline NaVILA. It measures fidelity to the reference policy, not whether the trajectory succeeds. Free Rule and Full Gate are diagnostic alternatives.
+    </p>
+
+    <div class="content has-text-justified" style="margin-top: 1.25rem;">
+      <p>
+        ASPEN maintains SR, OS, nDTW, and NE comparable to baseline NaVILA while reducing estimated inference time by <b>8.1%</b>. Compared with FlashTrigger, ASPEN uses 3.3 fewer calls per episode, while agreement decreases from 97.5% to 92.1%. The additional savings therefore come with an efficiency&ndash;agreement trade-off rather than an improvement in navigation performance.
+      </p>
+      <p>
+        SP-VLA has a slightly lower estimated inference time than ASPEN (38.0 vs. 38.2&nbsp;s), but its success rate falls to 42.7%. Free Rule offers the largest call and estimated-time reductions (19.6%) because of its simple refresh condition, but its success rate falls to 49.1% and exact agreement to 7.1%. Full Gate reduces calls by 11.7% but estimated time by only 3.3%, which shows why scheduling overhead must be included.
+      </p>
+    </div>
+
+    <h3 class="title is-4 has-text-centered plot-section-title">Adaptive Scheduling in an Example Episode</h3>
+    <div class="structure-image" style="margin-top: 10px;">
+      <img src="./static/images/Fig2_Episode.png" alt="Example RxR-CE episode: navigation trajectories, cumulative NaVILA calls, and total estimated inference time per method">
+    </div>
+    <p class="figure-caption">
+      <b>Example RxR-CE val-unseen episode with baseline action sequence preservation.</b> ASPEN reduces NaVILA calls from 53 to 47 (11%) and estimated inference time from 29.0 to 26.4&nbsp;s (9%). Green dots mark where ASPEN triggers semantic reasoning.
+    </p>
+    <div class="content has-text-justified">
+      <p>
+        ASPEN skips unnecessary semantic reasoning while following the reference trajectory exactly, and the episode succeeds with <b>9% estimated inference-time savings</b>. In the same episode, SP-VLA and Free Rule save more time but fail, while Full Gate also fails and its scheduling overhead makes its total estimated time <i>higher</i> than the baseline's.
+      </p>
+    </div>
+
+    <h3 class="title is-4 has-text-centered plot-section-title">Triggering Reasoning at Critical Command Boundaries</h3>
+    <div class="structure-image" style="margin-top: 10px;">
+      <img src="./static/images/Fig3_CriticalBoundary.png" alt="Critical command boundary: ASPEN refreshes reasoning and turns right while SP-VLA continues forward and fails">
+    </div>
+    <p class="figure-caption">
+      <b>A critical command boundary in an example RxR-CE val-unseen episode.</b> ASPEN refreshes semantic reasoning and turns right, whereas the navigation-adapted SP-VLA continues forward and subsequently fails.
+    </p>
+    <div class="content has-text-justified">
+      <p>
+        At point 1, the instruction calls for a right turn after passing an open wood door, and a walkway is visible. ASPEN's context-conditioned predictor, which sees the instruction and execution history, <b>triggers fresh semantic reasoning</b>, and NaVILA issues <i>turn right 15&deg;</i>. SP-VLA, which schedules from motion history, continues with <i>forward 75&nbsp;cm</i>, misses the turn, and subsequently fails.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background-color: #f5f5f5;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Conclusion</h2>
+        <div class="content has-text-justified">
+          <p>
+            ASPEN enables efficient, event-triggered semantic reasoning in navigation VLAs through command persistence prediction. Its lightweight multimodal command predictor combines navigation context with cached VLA confidence to determine when the previous command can be reused. Cross-dataset evaluation with frozen NaVILA shows reduced reasoning cost while maintaining comparable navigation performance and high agreement with baseline action sequences. Future work will examine transfer to other navigation VLAs and measure latency and energy savings on physical robots.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{akustia2026aspen,
+  title         = {ASPEN: Adaptive Semantic Reasoning via Command Persistence Prediction for Efficient Navigation VLAs},
+  author        = {Akustia, Vieri N. and Hu, Bin},
+  booktitle     = {2026 Conference on Robot Learning Workshop on Efficient Foundation Models for Real-Time Embodied AI},
+  year          = {2026},
+  address       = {Austin, TX, USA},
+  eprint        = {2610.36285},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  url           = {https://arxiv.org/abs/2610.36285},
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Website template adapted from <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a> under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a> license.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

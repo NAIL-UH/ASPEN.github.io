@@ -131,15 +131,12 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <!-- TODO: Video button hidden until a video is available.
-                   To enable: replace "#" with the video link and remove these comment markers.
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                <a href="#video" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-youtube"></i></span>
                   <span>Video</span>
                 </a>
               </span>
-              -->
             </div>
           </div>
         </div>
@@ -307,16 +304,19 @@
       </p>
     </div>
 
-    <h3 class="title is-4 has-text-centered plot-section-title">Triggering Reasoning at Critical Command Boundaries</h3>
-    <div class="structure-image" style="margin-top: 10px;">
-      <img src="./static/images/Fig3_CriticalBoundary.png" alt="Critical command boundary: ASPEN refreshes reasoning and turns right while SP-VLA continues forward and fails">
+    <h3 class="title is-4 has-text-centered plot-section-title" id="video">Triggering Reasoning at Critical Command Boundaries</h3>
+    <div class="video-container" style="max-width: 100%; margin-top: 10px;">
+      <video autoplay controls muted loop playsinline preload="metadata" width="100%" poster="./static/images/video_poster.jpg">
+        <source src="./static/videos/ASPEN_vs_SPVLA_episode5301.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
     </div>
     <p class="figure-caption">
-      <b>A critical command boundary in an example RxR-CE val-unseen episode.</b> ASPEN refreshes semantic reasoning and turns right, whereas the navigation-adapted SP-VLA continues forward and subsequently fails.
+      <b>A critical command boundary in an example RxR-CE val-unseen episode.</b> Side-by-side rollouts of ASPEN (left) and the navigation-adapted SP-VLA (right), with the top-down map in the center. At the critical point, ASPEN calls NaVILA and turns right, whereas SP-VLA skips the call, continues forward, and subsequently fails.
     </p>
     <div class="content has-text-justified">
       <p>
-        At point 1, the instruction calls for a right turn after passing an open wood door, and a walkway is visible. ASPEN's context-conditioned predictor, which sees the instruction and execution history, <b>triggers fresh semantic reasoning</b>, and NaVILA issues <i>turn right 15&deg;</i>. SP-VLA, which schedules from motion history, continues with <i>forward 75&nbsp;cm</i>, misses the turn, and subsequently fails.
+        At point 1, the instruction calls for a right turn after passing an open wood door, and a walkway is visible. ASPEN's context-conditioned predictor, which sees the instruction and execution history, <b>triggers fresh semantic reasoning</b>, and NaVILA issues <i>turn right 15&deg;</i>. SP-VLA, which schedules from motion history, skips the VLA call and continues with <i>forward 75&nbsp;cm</i>, misses the turn, and subsequently fails. ASPEN reaches the goal region and stops 0.8&nbsp;m from the goal.
       </p>
     </div>
   </div>

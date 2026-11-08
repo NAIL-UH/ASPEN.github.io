@@ -8,7 +8,7 @@ Live at https://nail-uh.github.io/ASPEN.github.io/
 ## Editing
 
 - All content is in `index.html`; figures are in `static/images/`.
-- To add a video: place the `.mp4` in `static/videos/` (or use a YouTube URL), then un-comment the Video button in `index.html` and set its `href`.
+- Videos live in `static/videos/`. The Video button in the header links to the `#video` section.
 - Commit and push to `main`; GitHub Pages redeploys in about a minute.
 
 Website template adapted from [Nerfies](https://github.com/nerfies/nerfies.github.io) under a
